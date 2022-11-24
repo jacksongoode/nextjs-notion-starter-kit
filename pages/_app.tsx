@@ -7,9 +7,6 @@ import * as Fathom from 'fathom-client'
 // used for rendering equations (optional)
 // import 'katex/dist/katex.min.css'
 import 'styles/katex.min.css'
-import 'styles/katex.min.js'
-// import 'styles/contrib/auto-render.min.js'
-import renderMathInElement from 'styles/contrib/auto-render.min.js'
 // import posthog from 'posthog-js'
 // used for code syntax highlighting (optional)
 import 'prismjs/themes/prism-coy.css'
