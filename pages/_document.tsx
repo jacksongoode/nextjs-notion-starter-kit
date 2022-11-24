@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
 import 'styles/katex.min.js'
-import 'styles/contrib/katex.min.js'
+import 'styles/contrib/auto-render.min.js'
 
 import { IconContext } from '@react-icons/all-files'
 
