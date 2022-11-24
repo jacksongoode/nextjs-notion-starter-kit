@@ -1,7 +1,5 @@
 import * as React from 'react'
 import Document, { Head, Html, Main, NextScript } from 'next/document'
-import 'styles/katex.min.js'
-import 'styles/contrib/auto-render.min.js'
 
 import { IconContext } from '@react-icons/all-files'
 
@@ -18,13 +16,6 @@ export default class MyDocument extends Document {
               sizes='32x32'
               href='favicon.png'
             />
-            <script defer src="styles/katex.min.js" ></script>
-            <script defer src="styles/contrib/auto-render.min.js" ></script>
-            <script dangerouslySetInnerHTML={{
-              __html: `
-renderMathInElement(document.body);
-              `
-            }}></script>
             <link rel='manifest' href='/manifest.json' />
           </Head>
 
