@@ -78,12 +78,12 @@
 }
 
 .notion-collection-card {
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: none;
 }
 
 .notion-collection-card-cover img {
-  border-radius: 16px;
+  border-radius: 12px;
 }
 
 .notion-collection-card {
@@ -91,7 +91,7 @@
 }
 
 .notion-collection-card-cover {
-  border-radius: 16px;
+  border-radius: 12px;
   box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
 }
 
@@ -102,7 +102,7 @@
 }
 
 .notion-collection-card:hover .notion-collection-card-cover {
-  filter: brightness(120%);
+  filter: brightness(105%);
 }
 
 .notion-collection-card-body {
@@ -359,13 +359,13 @@
 
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
-  backdrop-filter: saturate(180%) blur(16px);
+  backdrop-filter: saturate(80%) blur(8px);
 }
 
 .dark-mode .notion-header {
   background: transparent;
   box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-  backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(80%) blur(8px);
 }
 
 /* Workaround for Firefox not supporting backdrop-filter yet */
