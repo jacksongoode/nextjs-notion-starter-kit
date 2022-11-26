@@ -20,6 +20,8 @@ export default class MyDocument extends Document {
           </Head>
 
           <body>
+            <script src="/js/katex.min.js" />
+            <script src="/js/auto-render.min.js" />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -57,6 +59,29 @@ export default class MyDocument extends Document {
     localStorage.setItem(storageKey, JSON.stringify(isDarkMode))
   }
 })();
+/* A fix for now for errored Katex equations */
+function waitForElm(selector) {
+  return new Promise(resolve => {
+      if (document.querySelector(selector)) {
+          return resolve(document.querySelector(selector));
+      }
+      const observer = new MutationObserver(mutations => {
+          if (document.querySelector(selector)) {
+              resolve(document.querySelector(selector));
+              observer.disconnect();
+          }
+      });
+      observer.observe(document.body, {
+          childList: true,
+          subtree: true
+      });
+  });
+}
+waitForElm('.katex-error').then((elm) => {
+  stylesheet = document.styleSheets[0]
+  stylesheet.insertRule(".katex-error { color: initial !important;}", 0);
+  renderMathInElement(document.body);
+});
 `
               }}
             />
