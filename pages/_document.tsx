@@ -79,14 +79,14 @@ function waitForElm(selector) {
 }
 waitForElm('.katex-error').then((elm) => {
   stylesheet = document.styleSheets[0]
-  stylesheet.insertRule(".katex-error { color: initial !important;}", 0);
+  stylesheet.insertRule(".katex-error { color: initial !important; }", 0);
   renderMathInElement(document.body);
 });
 `
               }}
             />
+            
             <Main />
-
             <NextScript />
           </body>
         </Html>
