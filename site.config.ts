@@ -17,7 +17,7 @@ export default siteConfig({
   description: "A collection of nLine's blogs",
 
   // social usernames (optional)
-  twitter: 'nlineofficial',
+  twitter: 'nLineInc',
   github: 'nline',
   linkedin: 'nline',
   // mastodon: '#', // optional mastodon profile URL, provides link verification
