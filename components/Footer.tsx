@@ -47,7 +47,7 @@ export const FooterImpl: React.FC = () => {
             onClick={onToggleDarkMode}
             title='Toggle dark mode'
           >
-            {false ? <IoMoonSharp /> : <IoSunnyOutline />}
+            {isDarkMode ? <IoMoonSharp /> : <IoSunnyOutline />}
           </a>
         )}
       </div>
