@@ -81,12 +81,26 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.notion-header .breadcrumb.active > .title {
+
+.notion-header .breadcrumb.active>.title {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Fix mobile */
 .notion-gallery-grid {
+  /* Fix mobile */
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
+
+  /* Decrease grid padding */
+  grid-gap: 5vmin;
+  gap: 5vmin;
+}
+
+/* Wrap long titles */
+.notion-gallery-grid .notion-page-title-text {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
