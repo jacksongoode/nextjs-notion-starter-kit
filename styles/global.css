@@ -104,3 +104,7 @@ body {
   text-overflow: ellipsis;
   overflow: hidden;
 }
+
+.notion-list-numbered {
+  max-width: 100%;
+}
