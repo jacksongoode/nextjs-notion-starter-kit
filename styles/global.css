@@ -108,3 +108,7 @@ body {
 .notion-list-numbered {
   max-width: 100%;
 }
+
+.notion-equation-block {
+  text-align: center;
+}
