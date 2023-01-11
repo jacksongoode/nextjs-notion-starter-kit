@@ -236,12 +236,13 @@
 .notion-link:hover {
   border-bottom-color: transparent;
 
-  background-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+
+  background-image: linear-gradient(90.68deg, #3e92cc 0.26%, #2a628f 102.37%);
   background-repeat: no-repeat;
   background-position: 0 100%;
   background-size: 100% 0.1rem;
 
-  transition-property: background-position, background-size;
+  transition-property: background-position, background-size, border-bottom-color;
   transition-duration: 300ms;
 }
 
@@ -375,7 +376,7 @@
 }
 
 .notion-bookmark:hover {
-  border-image: linear-gradient(90.68deg, #b439df 0.26%, #e5337e 102.37%);
+  border-image: linear-gradient(90.68deg, #2a628f 0.26%, #3e92cc 102.37%);
   border-image-slice: 1;
 }
 
