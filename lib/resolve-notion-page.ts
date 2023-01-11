@@ -73,7 +73,7 @@ export async function resolveNotionPage(domain: string, rawPageId?: string) {
         // note: we're purposefully not caching URI to pageId mappings for 404s
         return {
           error: {
-            message: `Not found "${rawPageId}"`,
+            message: `Page "${rawPageId}" not found`,
             statusCode: 404
           }
         }
