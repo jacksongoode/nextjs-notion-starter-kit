@@ -105,10 +105,17 @@ body {
   overflow: hidden;
 }
 
+/*  Fixes for Katex */
 .notion-list-numbered {
   max-width: 100%;
 }
 
 .notion-equation-block {
   text-align: center;
+}
+
+/* Soften edges of imgs */
+.notion-asset-wrapper img,
+.notion-asset-wrapper span {
+  border-radius: 0.5em;
 }
