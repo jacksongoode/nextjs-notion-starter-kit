@@ -80,14 +80,12 @@
 .notion-collection-card {
   border-radius: 0.5em;
   box-shadow: none;
+  overflow: visible;
+  padding: 10px;
 }
 
 .notion-collection-card-cover img {
   border-radius: 0.5em;
-}
-
-.notion-collection-card {
-  overflow: visible;
 }
 
 .notion-collection-card-cover {
@@ -106,7 +104,7 @@
 }
 
 .notion-collection-card-body {
-  padding: 10px;
+  padding: 10px 0 0 0;
 }
 
 /* only target safari */
