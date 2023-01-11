@@ -92,8 +92,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important;
 
   /* Decrease grid padding */
-  grid-gap: 5vmin;
-  gap: 5vmin;
+  grid-gap: 3vmin;
 }
 
 /* Wrap long titles */
