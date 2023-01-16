@@ -29,6 +29,7 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
 
   const feed = new RSS({
     title: config.name,
+    author: config.author,
     site_url: config.host,
     feed_url: `${config.host}/feed.xml`,
     language: config.language,
@@ -63,24 +64,26 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       block,
       recordMap
     )
-    const publishedTime = getPageProperty<number>('Published', block, recordMap)
+    const publishedTime = getPageProperty<number>('Date', block, recordMap)
     const date = lastUpdatedTime
       ? new Date(lastUpdatedTime)
       : publishedTime
-      ? new Date(publishedTime)
-      : undefined
+        ? new Date(publishedTime)
+        : undefined
     const socialImageUrl = getSocialImageUrl(pageId)
-
+    const author = getPageProperty<string>('Authors', block, recordMap) ||
+      config.author
     feed.item({
       title,
+      author,
       url,
       date,
       description,
       enclosure: socialImageUrl
         ? {
-            url: socialImageUrl,
-            type: 'image/jpeg'
-          }
+          url: socialImageUrl,
+          type: 'image/jpeg'
+        }
         : undefined
     })
   }

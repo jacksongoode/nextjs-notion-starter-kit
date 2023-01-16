@@ -76,7 +76,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   ])
 
   const author =
-    getPageProperty<string>('Author', block, recordMap) || libConfig.author
+    getPageProperty<string>('Authors', block, recordMap) || libConfig.author
 
   // const socialDescription =
   //   getPageProperty<string>('Description', block, recordMap) ||
@@ -87,7 +87,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   block,
   //   recordMap
   // )
-  const publishedTime = getPageProperty<number>('Published', block, recordMap)
+  const publishedTime = getPageProperty<number>('Date', block, recordMap)
   const datePublished = publishedTime ? new Date(publishedTime) : undefined
   // const dateUpdated = lastUpdatedTime
   //   ? new Date(lastUpdatedTime)
