@@ -78,8 +78,12 @@ function waitForElm(selector) {
   });
 }
 waitForElm('.katex-error').then((elm) => {
-  stylesheet = document.styleSheets[0]
-  stylesheet.insertRule(".katex-error { color: var(--fg-color) !important; }", 0);
+  Array.from(document.getElementsByClassName('katex-error')).forEach(
+    elem => {
+      elem.removeAttribute('title');
+      elem.removeAttribute('style');
+    }
+  );
   renderMathInElement(document.body);
 });
 `

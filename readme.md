@@ -8,7 +8,7 @@
 
 This is the repo for hosting nLine's blog that mirrors content from Notion. It automatically fetches from a desiginated page with live changes we make within seconds. It builds off of the great work of the [upstream project](https://github.com/transitive-bullshit/nextjs-notion-starter-kit).
 
-Custom nLine specific style overrides are made in the `global.css` file.
+Custom nLine specific style overrides are made in the `nline.css` file.
 
 <details>
 <summary>Upstream readme</summary>

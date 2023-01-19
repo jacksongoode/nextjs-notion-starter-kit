@@ -19,7 +19,7 @@ import 'styles/notion.css'
 import 'styles/prism-theme.css'
 
 // nLine specific styles
-import 'styles/global.css'
+import 'styles/nline.css'
 
 import {
   fathomConfig,
