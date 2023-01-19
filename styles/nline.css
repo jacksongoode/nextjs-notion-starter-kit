@@ -111,6 +111,7 @@ body {
 
 .notion-equation-block {
   text-align: center;
+  overflow: hidden;
 }
 
 /* Soften edges of imgs */
