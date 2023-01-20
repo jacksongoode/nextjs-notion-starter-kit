@@ -9,6 +9,26 @@ export default class MyDocument extends Document {
       <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
         <Html lang='en'>
           <Head>
+            {/* Global site tag (gtag.js) - Google Analytics */}
+            <script
+              async
+              src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'
+            ></script>
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7BY3KX3N9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S7BY3KX3N9');
+</script>
+`
+              }}
+            />
+
             <link rel='shortcut icon' href='/favicon.ico' />
             <link
               rel='icon'
@@ -20,8 +40,8 @@ export default class MyDocument extends Document {
           </Head>
 
           <body>
-            <script src="/js/katex.min.js" />
-            <script src="/js/auto-render.min.js" />
+            <script src='/js/katex.min.js' />
+            <script src='/js/auto-render.min.js' />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
@@ -89,7 +109,7 @@ waitForElm('.katex-error').then((elm) => {
 `
               }}
             />
-            
+
             <Main />
             <NextScript />
           </body>
