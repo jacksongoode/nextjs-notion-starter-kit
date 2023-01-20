@@ -12,13 +12,12 @@ export default class MyDocument extends Document {
             {/* Global site tag (gtag.js) - Google Analytics */}
             <script
               async
-              src='https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID'
+              src='https://www.googletagmanager.com/gtag/js?id=G-S7BY3KX3N9'
             ></script>
             <script
               dangerouslySetInnerHTML={{
                 __html: `
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-S7BY3KX3N9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
