@@ -13,17 +13,14 @@ export default class MyDocument extends Document {
             <script
               async
               src='https://www.googletagmanager.com/gtag/js?id=G-S7BY3KX3N9'
-            ></script>
+            />
             <script
               dangerouslySetInnerHTML={{
                 __html: `
-<!-- Google tag (gtag.js) -->
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-S7BY3KX3N9');
-</script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-S7BY3KX3N9');
 `
               }}
             />

@@ -3,7 +3,7 @@ import * as React from 'react'
 import type { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 
-import * as Fathom from 'fathom-client'
+// import * as Fathom from 'fathom-client'
 // used for rendering equations (optional)
 import 'katex/dist/katex.min.css'
 // import posthog from 'posthog-js'
@@ -21,31 +21,31 @@ import 'styles/prism-theme.css'
 // nLine specific styles
 import 'styles/nline.css'
 
-import {
-  fathomConfig,
-  fathomId,
-  // isServer
-  // posthogConfig,
-  // posthogId
-} from '@/lib/config'
+// import {
+//   fathomConfig,
+//   fathomId,
+//   isServer
+//   posthogConfig,
+//   posthogId
+// } from '@/lib/config'
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter()
 
   React.useEffect(() => {
     function onRouteChangeComplete() {
-      if (fathomId) {
-        Fathom.trackPageview()
-      }
+      // if (fathomId) {
+      //   Fathom.trackPageview()
+      // }
 
       // if (posthogId) {
       //   posthog.capture('$pageview')
       // }
     }
 
-    if (fathomId) {
-      Fathom.load(fathomId, fathomConfig)
-    }
+    // if (fathomId) {
+    //   Fathom.load(fathomId, fathomConfig)
+    // }
 
     // if (posthogId) {
     //   posthog.init(posthogId, posthogConfig)
