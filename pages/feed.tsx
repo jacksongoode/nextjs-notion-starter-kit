@@ -54,25 +54,27 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       continue
     }
 
+    const published = getPageProperty<number>('Published', block, recordMap)
+    if (!published) {
+      continue
+    }
+
     const title = getBlockTitle(block, recordMap) || config.name
     const description =
       getPageProperty<string>('Description', block, recordMap) ||
       config.description
     const url = getCanonicalPageUrl(config.site, recordMap)(pageId)
-    const lastUpdatedTime = getPageProperty<number>(
-      'Last Updated',
-      block,
-      recordMap
-    )
+    // const lastUpdatedTime = getPageProperty<number>(
+    //   'Last Updated',
+    //   block,
+    //   recordMap
+    // )
     const publishedTime = getPageProperty<number>('Date', block, recordMap)
-    const date = lastUpdatedTime
-      ? new Date(lastUpdatedTime)
-      : publishedTime
-        ? new Date(publishedTime)
-        : undefined
+    const date = publishedTime ? new Date(publishedTime) : undefined
+
     const socialImageUrl = getSocialImageUrl(pageId)
-    const author = getPageProperty<string>('Authors', block, recordMap) ||
-      config.author
+    const author =
+      getPageProperty<string>('Authors', block, recordMap) || config.author
     feed.item({
       title,
       author,
@@ -81,10 +83,11 @@ export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
       description,
       enclosure: socialImageUrl
         ? {
-          url: socialImageUrl,
-          type: 'image/jpeg'
-        }
-        : undefined
+            url: socialImageUrl,
+            type: 'image/jpeg'
+          }
+        : undefined,
+      custom_elements: [{ timestamp: publishedTime }]
     })
   }
 
