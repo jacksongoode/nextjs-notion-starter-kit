@@ -38,6 +38,7 @@ export default async function OGImage(req: NextRequest) {
   const pageInfo: NotionPageInfo = await pageInfoRes.json()
   console.log(pageInfo)
 
+  const showText = searchParams.get('text') !== 'false'
   const [interRegularFont, interBoldFont] = await Promise.all([
     interRegularFontP,
     interBoldFontP
@@ -84,76 +85,82 @@ export default async function OGImage(req: NextRequest) {
           />
         )}
 
-        <div
-          style={{
-            position: 'relative',
-            width: 900,
-            height: 465,
-            display: 'flex',
-            flexDirection: 'column',
-            border: '16px solid rgba(0,0,0,0.3)',
-            borderRadius: 8,
-            zIndex: '1'
-          }}
-        >
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'space-around',
-              backgroundColor: '#fff',
-              padding: 24,
-              alignItems: 'center',
-              textAlign: 'center'
-            }}
-          >
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0 }}>{pageInfo.detail}</div>
-            )}
-
+        {showText && (
+          <>
             <div
               style={{
-                fontSize: 70,
-                fontWeight: 700,
-                fontFamily: 'Inter'
+                position: 'relative',
+                width: 900,
+                height: 465,
+                display: 'flex',
+                flexDirection: 'column',
+                border: '16px solid rgba(0,0,0,0.3)',
+                borderRadius: 8,
+                zIndex: '1'
               }}
             >
-              {pageInfo.title}
+              <div
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-around',
+                  backgroundColor: '#fff',
+                  padding: 24,
+                  alignItems: 'center',
+                  textAlign: 'center'
+                }}
+              >
+                {pageInfo.detail && (
+                  <div style={{ fontSize: 32, opacity: 0 }}>
+                    {pageInfo.detail}
+                  </div>
+                )}
+
+                <div
+                  style={{
+                    fontSize: 70,
+                    fontWeight: 700,
+                    fontFamily: 'Inter'
+                  }}
+                >
+                  {pageInfo.title}
+                </div>
+
+                {pageInfo.detail && (
+                  <div style={{ fontSize: 32, opacity: 0.6 }}>
+                    {pageInfo.detail}
+                  </div>
+                )}
+              </div>
             </div>
 
-            {pageInfo.detail && (
-              <div style={{ fontSize: 32, opacity: 0.6 }}>
-                {pageInfo.detail}
+            {pageInfo.authorImage && (
+              <div
+                style={{
+                  position: 'absolute',
+                  top: 47,
+                  left: 104,
+                  height: 128,
+                  width: 128,
+                  display: 'flex',
+                  borderRadius: '50%',
+                  border: '4px solid #fff',
+                  zIndex: '5'
+                }}
+              >
+                <img
+                  src={pageInfo.authorImage}
+                  style={{
+                    width: '100%',
+                    height: '100%'
+                    // transform: 'scale(1.04)'
+                  }}
+                />
               </div>
             )}
-          </div>
-        </div>
-
-        {pageInfo.authorImage && (
-          <div
-            style={{
-              position: 'absolute',
-              top: 47,
-              left: 104,
-              height: 128,
-              width: 128,
-              display: 'flex',
-              borderRadius: '50%',
-              border: '4px solid #fff',
-              zIndex: '5'
-            }}
-          >
-            <img
-              src={pageInfo.authorImage}
-              style={{
-                width: '100%',
-                height: '100%'
-                // transform: 'scale(1.04)'
-              }}
-            />
-          </div>
+          </>
         )}
       </div>
     ),
