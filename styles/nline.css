@@ -96,6 +96,7 @@ body {
 
 /* Wrap long titles */
 .notion-gallery-grid .notion-page-title-text {
+  font-size: 1.3em;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
