@@ -71,6 +71,11 @@
 .notion-gallery-grid .notion-collection-card-property {
   white-space: unset;
   text-overflow: unset;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .notion-gallery-grid .notion-property-text {
@@ -86,6 +91,7 @@
 
 .notion-collection-card-cover img {
   border-radius: 0.5em;
+  object-fit: cover;
 }
 
 .notion-collection-card-cover {
@@ -234,7 +240,6 @@
 .notion-link:focus,
 .notion-link:hover {
   border-bottom-color: transparent;
-
 
   background-image: linear-gradient(90.68deg, #3e92cc 0.26%, #2a628f 102.37%);
   background-repeat: no-repeat;
