@@ -125,7 +125,7 @@ async function isUrlReachable(url: string | null): Promise<boolean> {
   }
 
   try {
-    await got.head(url)
+    await got(url, { method: 'HEAD' })
     return true
   } catch (err) {
     return false

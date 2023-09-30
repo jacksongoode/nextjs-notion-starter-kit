@@ -29,6 +29,7 @@
     "@keyvhq/core": "^2.1.0",
     "@keyvhq/redis": "^2.1.0",
     "@react-icons/all-files": "^4.1.0",
+    "@types/got": "^9.6.12",
     "@vercel/analytics": "^1.0.2",
     "@vercel/og": "^0.5.17",
     "classnames": "^2.3.2",
