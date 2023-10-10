@@ -48,6 +48,9 @@ export default siteConfig({
   // }
   pageUrlOverrides: null,
 
+  // disable search for now since it's broken
+  isSearchEnabled: false,
+
   // whether to use the default notion navigation style or a custom one with links to
   // important pages
   // navigationStyle: 'default'
