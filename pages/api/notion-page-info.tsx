@@ -98,9 +98,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     isBlogPost && datePublished
       ? `${datePublished.toLocaleString('en-US', {
           month: 'long'
-        })} ${datePublished.getFullYear()}`
+        })}, ${datePublished.getFullYear()}`
       : undefined
-  const detail = date || author || libConfig.domain
+  const detail = date || libConfig.domain
 
   const pageInfo: NotionPageInfo = {
     pageId,

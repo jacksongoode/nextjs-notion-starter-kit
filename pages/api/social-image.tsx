@@ -95,8 +95,8 @@ export default async function OGImage(req: NextRequest) {
                 display: 'flex',
                 flexDirection: 'column',
                 border: '16px solid rgba(0,0,0,0.3)',
-                borderRadius: 8,
-                zIndex: '1'
+                borderRadius: 12,
+                zIndex: 1
               }}
             >
               <div
@@ -107,30 +107,49 @@ export default async function OGImage(req: NextRequest) {
                   flexDirection: 'column',
                   justifyContent: 'space-around',
                   backgroundColor: '#fff',
-                  padding: 24,
-                  alignItems: 'center',
-                  textAlign: 'center'
+                  padding: 36
                 }}
               >
-                {pageInfo.detail && (
-                  <div style={{ fontSize: 32, opacity: 0 }}>
-                    {pageInfo.detail}
-                  </div>
-                )}
-
                 <div
                   style={{
-                    fontSize: 70,
+                    fontSize: 60,
                     fontWeight: 700,
-                    fontFamily: 'Inter'
+                    fontFamily: 'Inter',
+                    display: '-webkit-box',
+                    WebkitLineClamp: 3,
+                    WebkitBoxOrient: 'vertical',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}
                 >
                   {pageInfo.title}
                 </div>
 
+                <hr
+                  style={{
+                    borderTop: '2px solid rgba(0, 0, 0, 0.3)',
+                    margin: '10px 0'
+                  }}
+                />
+
                 {pageInfo.detail && (
-                  <div style={{ fontSize: 32, opacity: 0.6 }}>
-                    {pageInfo.detail}
+                  <div
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      fontSize: 32,
+                      opacity: 0.6,
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      maxWidth: '100%'
+                    }}
+                  >
+                    <div>{pageInfo.detail}</div>
+                    {pageInfo.author && (
+                      <div style={{ alignItems: 'flex-start' }}>
+                        {pageInfo.author}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
