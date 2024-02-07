@@ -49,8 +49,14 @@ async function createPreviewImage(
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
 
-    const response = await got(url)
-    const buffer = Buffer.from(response.body)
+    // Fetch image data as a stream and collect chunks into a buffer
+    const stream = got.stream(url)
+    const chunks = []
+    for await (const chunk of stream) {
+      chunks.push(chunk)
+    }
+    const buffer = Buffer.concat(chunks)
+
     const result = await lqip(buffer)
     console.log('lqip', { ...result.metadata, url, cacheKey })
 

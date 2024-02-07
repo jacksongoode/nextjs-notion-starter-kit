@@ -6,15 +6,14 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 module.exports = withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
-    domains: [
-      'www.notion.so',
-      'notion.so',
-      'images.unsplash.com',
-      'pbs.twimg.com',
-      'abs.twimg.com',
-      's3.us-west-2.amazonaws.com',
-      'nline.io',
-      'cdn.jsdelivr.net'
+    remotePatterns: [
+      { hostname: '***.notion.so' },
+      { hostname: 'images.unsplash.com' },
+      { hostname: 'pbs.twimg.com' },
+      { hostname: 'abs.twimg.com' },
+      { hostname: 's3.us-west-2.amazonaws.com' },
+      { hostname: 'nline.io' },
+      { hostname: 'cdn.jsdelivr.net' }
     ],
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
