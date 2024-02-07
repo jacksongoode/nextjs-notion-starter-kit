@@ -18,7 +18,7 @@ export const config = {
   runtime: 'edge'
 }
 
-export default async function OGImage(req: NextRequest) {
+export async function get(req: NextRequest) {
   const { searchParams } = new URL(req.url)
   const pageId = searchParams.get('id') || rootNotionPageId
   if (!pageId) {
@@ -36,7 +36,7 @@ export default async function OGImage(req: NextRequest) {
     return new Response(pageInfoRes.statusText, { status: pageInfoRes.status })
   }
   const pageInfo: NotionPageInfo = await pageInfoRes.json()
-  console.log(pageInfo)
+  // console.log(pageInfo)
 
   const showText = searchParams.get('text') !== 'false'
   const [interRegularFont, interBoldFont] = await Promise.all([
@@ -44,144 +44,146 @@ export default async function OGImage(req: NextRequest) {
     interBoldFontP
   ])
 
-  return new ImageResponse(
-    (
-      <div
-        style={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundColor: '#1F2027',
-          alignItems: 'center',
-          justifyContent: 'center',
-          fontFamily: '"Inter", sans-serif',
-          color: 'black'
-        }}
-      >
-        {pageInfo.image && (
-          <img
-            src={pageInfo.image}
-            style={{
-              position: 'absolute',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-              // TODO: satori doesn't support background-size: cover and seems to
-              // have inconsistent support for filter + transform to get rid of the
-              // blurred edges. For now, we'll go without a blur filter on the
-              // background, but Satori is still very new, so hopefully we can re-add
-              // the blur soon.
-
-              // backgroundImage: pageInfo.image
-              //   ? `url(${pageInfo.image})`
-              //   : undefined,
-              // backgroundSize: '100% 100%'
-              // TODO: pageInfo.imageObjectPosition
-              // filter: 'blur(8px)'
-              // transform: 'scale(1.05)'
-            }}
-          />
-        )}
-
-        {showText && (
-          <>
-            <div
+  return (
+    new ImageResponse(
+      (
+        <div
+          style={{
+            position: 'relative',
+            width: '100%',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            backgroundColor: '#1F2027',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontFamily: '"Inter", sans-serif',
+            color: 'black'
+          }}
+        >
+          {pageInfo.image && (
+            <img
+              src={pageInfo.image}
               style={{
-                position: 'relative',
-                width: 900,
-                height: 465,
-                display: 'flex',
-                flexDirection: 'column',
-                border: '16px solid rgba(0,0,0,0.3)',
-                borderRadius: 12,
-                zIndex: 1
+                position: 'absolute',
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover'
+                // TODO: satori doesn't support background-size: cover and seems to
+                // have inconsistent support for filter + transform to get rid of the
+                // blurred edges. For now, we'll go without a blur filter on the
+                // background, but Satori is still very new, so hopefully we can re-add
+                // the blur soon.
+
+                // backgroundImage: pageInfo.image
+                //   ? `url(${pageInfo.image})`
+                //   : undefined,
+                // backgroundSize: '100% 100%'
+                // TODO: pageInfo.imageObjectPosition
+                // filter: 'blur(8px)'
+                // transform: 'scale(1.05)'
               }}
-            >
+            />
+          )}
+
+          {showText && (
+            <>
               <div
                 style={{
-                  width: '100%',
-                  height: '100%',
+                  position: 'relative',
+                  width: 900,
+                  height: 465,
                   display: 'flex',
                   flexDirection: 'column',
-                  justifyContent: 'space-around',
-                  backgroundColor: '#fff',
-                  padding: 36
+                  border: '16px solid rgba(0,0,0,0.3)',
+                  borderRadius: 12,
+                  zIndex: 1
                 }}
               >
                 <div
                   style={{
-                    fontSize: 60,
-                    fontWeight: 700,
-                    fontFamily: 'Inter',
-                    display: '-webkit-box',
-                    WebkitLineClamp: 3,
-                    WebkitBoxOrient: 'vertical',
-                    overflow: 'hidden',
-                    textOverflow: 'ellipsis'
+                    width: '100%',
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-around',
+                    backgroundColor: '#fff',
+                    padding: 36
                   }}
                 >
-                  {pageInfo.title}
-                </div>
-
-                <hr
-                  style={{
-                    borderTop: '2px solid rgba(0, 0, 0, 0.3)',
-                    margin: '10px 0'
-                  }}
-                />
-
-                {pageInfo.detail && (
                   <div
                     style={{
-                      display: 'flex',
-                      flexDirection: 'column',
-                      fontSize: 32,
-                      opacity: 0.6,
+                      fontSize: 60,
+                      fontWeight: 700,
+                      fontFamily: 'Inter',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
                       overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      maxWidth: '100%'
+                      textOverflow: 'ellipsis'
                     }}
                   >
-                    <div>{pageInfo.detail}</div>
-                    {pageInfo.author && (
-                      <div style={{ alignItems: 'flex-start' }}>
-                        {pageInfo.author}
-                      </div>
-                    )}
+                    {pageInfo.title}
                   </div>
-                )}
-              </div>
-            </div>
 
-            {pageInfo.authorImage && (
-              <div
-                style={{
-                  position: 'absolute',
-                  top: 47,
-                  left: 104,
-                  height: 128,
-                  width: 128,
-                  display: 'flex',
-                  borderRadius: '50%',
-                  border: '4px solid #fff',
-                  zIndex: '5'
-                }}
-              >
-                <img
-                  src={pageInfo.authorImage}
-                  style={{
-                    width: '100%',
-                    height: '100%'
-                    // transform: 'scale(1.04)'
-                  }}
-                />
+                  <hr
+                    style={{
+                      borderTop: '2px solid rgba(0, 0, 0, 0.3)',
+                      margin: '10px 0'
+                    }}
+                  />
+
+                  {pageInfo.detail && (
+                    <div
+                      style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        fontSize: 32,
+                        opacity: 0.6,
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        maxWidth: '100%'
+                      }}
+                    >
+                      <div>{pageInfo.detail}</div>
+                      {pageInfo.author && (
+                        <div style={{ alignItems: 'flex-start' }}>
+                          {pageInfo.author}
+                        </div>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
-            )}
-          </>
-        )}
-      </div>
+
+              {pageInfo.authorImage && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: 47,
+                    left: 104,
+                    height: 128,
+                    width: 128,
+                    display: 'flex',
+                    borderRadius: '50%',
+                    border: '4px solid #fff',
+                    zIndex: '5'
+                  }}
+                >
+                  <img
+                    src={pageInfo.authorImage}
+                    style={{
+                      width: '100%',
+                      height: '100%'
+                      // transform: 'scale(1.04)'
+                    }}
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </div>
+      )
     ),
     {
       width: 1200,
