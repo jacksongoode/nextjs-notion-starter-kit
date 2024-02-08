@@ -7,12 +7,12 @@ module.exports = withBundleAnalyzer({
   staticPageGenerationTimeout: 300,
   images: {
     remotePatterns: [
-      { hostname: '***.notion.so' },
+      { hostname: '**.nline.io' },
+      { hostname: '**.notion.so' },
       { hostname: 'images.unsplash.com' },
       { hostname: 'pbs.twimg.com' },
       { hostname: 'abs.twimg.com' },
       { hostname: 's3.us-west-2.amazonaws.com' },
-      { hostname: 'nline.io' },
       { hostname: 'cdn.jsdelivr.net' }
     ],
     formats: ['image/avif', 'image/webp'],
