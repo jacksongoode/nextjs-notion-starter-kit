@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { ImageResponse } from 'next/og'
+import type { NextApiRequest } from 'next'
 
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { NotionPageInfo } from '@/lib/types'
@@ -15,7 +16,7 @@ const interBoldFontP = fetch(
 
 export const runtime = 'edge'
 
-export default async function GET(req: Request) {
+export async function GET(req: NextApiRequest) {
   const { searchParams } = new URL(req.url)
   const pageId = searchParams.get('id') || rootNotionPageId
   if (!pageId) {
