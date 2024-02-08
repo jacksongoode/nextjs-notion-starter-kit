@@ -16,7 +16,7 @@ const interBoldFontP = fetch(
 
 export const runtime = 'edge'
 
-export async function GET(req: NextApiRequest) {
+export default async function GET(req: NextApiRequest) {
   const { searchParams } = new URL(req.url)
   const pageId = searchParams.get('id') || rootNotionPageId
   if (!pageId) {
