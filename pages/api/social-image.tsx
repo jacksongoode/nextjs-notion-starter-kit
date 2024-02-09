@@ -13,7 +13,7 @@ const interBoldFontP = fetch(
   new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
 ).then((res) => res.arrayBuffer())
 
-export const runtime = 'edge'
+export const runtime = 'experimental-edge'
 
 export default async function GET(req: Request) {
   const { searchParams } = new URL(req.url)
@@ -41,8 +41,8 @@ export default async function GET(req: Request) {
     interBoldFontP
   ])
 
-  return (
-    new ImageResponse(
+  try {
+    const imgResponse = new ImageResponse(
       (
         <div
           style={{
@@ -180,25 +180,29 @@ export default async function GET(req: Request) {
             </>
           )}
         </div>
-      )
-    ),
-    {
-      width: 1200,
-      height: 630,
-      fonts: [
-        {
-          name: 'Inter',
-          data: interRegularFont,
-          style: 'normal',
-          weight: 400
-        },
-        {
-          name: 'Inter',
-          data: interBoldFont,
-          style: 'normal',
-          weight: 700
-        }
-      ]
-    }
-  )
+      ),
+      {
+        width: 1200,
+        height: 630,
+        fonts: [
+          {
+            name: 'Inter',
+            data: interRegularFont,
+            style: 'normal',
+            weight: 400
+          },
+          {
+            name: 'Inter',
+            data: interBoldFont,
+            style: 'normal',
+            weight: 700
+          }
+        ]
+      }
+    )
+    return imgResponse
+  } catch (error) {
+    console.error('Failed to create ImageResponse:', error)
+    return new Response('Internal Server Error', { status: 500 })
+  }
 }
