@@ -41,7 +41,7 @@
     "got": "^14.2.0",
     "isomorphic-unfetch": "^4.0.2",
     "lqip-modern": "^2.0.0",
-    "next": "^14.1.0",
+    "next": "14.1.1-canary.46",
     "notion-client": "^6.16.0",
     "notion-types": "^6.16.0",
     "notion-utils": "^6.16.0",
@@ -55,8 +55,7 @@
     "react-notion-x": "^6.16.0",
     "react-tweet-embed": "^2.0.0",
     "react-use": "^17.5.0",
-    "rss": "^1.2.2",
-    "sharp": "^0.32.6"
+    "rss": "^1.2.2"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^14.1.0",
