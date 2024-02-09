@@ -6,7 +6,8 @@ import pMemoize from 'p-memoize'
 import {
   isPreviewImageSupportEnabled,
   navigationLinks,
-  navigationStyle
+  navigationStyle,
+  rootNotionPageId
 } from './config'
 import { notion } from './notion-api'
 import { getPreviewImageMap } from './preview-images'
@@ -39,22 +40,7 @@ const getNavigationLinkPages = pMemoize(
 
 export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
   let recordMap = await notion.getPage(pageId)
-
-  // Fix
-  // https://github.com/WeijunDeng/nextjs-notion-starter-kit/commit/5a2f5bab6a6dfe2d8df49ebcb9c506f3134bd66d
-  if (recordMap && recordMap["signed_urls"]) {
-    const signed_urls = recordMap["signed_urls"]
-    const new_signed_urls = {}
-    for (const p in signed_urls) {
-      if (signed_urls[p] && signed_urls[p].includes(".amazonaws.com/")) {
-        continue
-      }
-      new_signed_urls[p] = signed_urls[p]
-    }
-    recordMap["signed_urls"] = new_signed_urls
-  }
-
-  if (navigationStyle !== 'default') {
+  if (navigationStyle !== 'default' && rootNotionPageId === pageId) {
     // ensure that any pages linked to in the custom navigation header have
     // their block info fully resolved in the page record map so we know
     // the page title, slug, etc.
@@ -71,7 +57,7 @@ export async function getPage(pageId: string): Promise<ExtendedRecordMap> {
 
   if (isPreviewImageSupportEnabled) {
     const previewImageMap = await getPreviewImageMap(recordMap)
-      ; (recordMap as any).preview_images = previewImageMap
+    ;(recordMap as any).preview_images = previewImageMap
   }
 
   return recordMap
