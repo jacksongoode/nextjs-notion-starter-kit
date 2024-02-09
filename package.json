@@ -9,7 +9,6 @@
   "engines": {
     "node": ">=16"
   },
-  "packageManager": "pnpm@8.15.1",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -79,5 +78,6 @@
     "cacheable-request": {
       "keyv": "npm:@keyvhq/core@~1.6.6"
     }
-  }
+  },
+  "packageManager": "pnpm@8.12.0"
 }
