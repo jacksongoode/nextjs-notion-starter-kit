@@ -7,7 +7,7 @@
   "repository": "nline/nline-blog",
   "license": "MIT",
   "engines": {
-    "node": ">=16"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "next dev",
@@ -23,7 +23,8 @@
     "test": "run-p test:*",
     "test:lint": "eslint '**/*.{ts,tsx}'",
     "test:prettier": "prettier '**/*.{js,jsx,ts,tsx}' --check",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "postinstall": "pnpm rebuild sharp"
   },
   "dependencies": {
     "@fisch0920/use-dark-mode": "^2.4.0",
