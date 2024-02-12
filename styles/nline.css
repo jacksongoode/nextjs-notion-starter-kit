@@ -118,3 +118,11 @@ body {
 .notion-asset-wrapper span {
   border-radius: 0.5em;
 }
+
+.notion-page-icon-hero {
+  border: 6px solid rgba(0, 0, 0, 0.8);
+}
+
+.notion-page-has-cover {
+  padding-top: 84px;
+}

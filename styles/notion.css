@@ -96,7 +96,7 @@
 
 .notion-collection-card-cover {
   border-radius: 0.5em;
-  box-shadow: 2px 2px 8px 4px rgba(15, 15, 15, 0.1);
+  box-shadow: 2px 2px 6px 2px rgba(15, 15, 15, 0.15);
 }
 
 .notion-collection-card-cover {
@@ -147,15 +147,15 @@
 
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
   }
 }
 
 @media only screen and (max-width: 720px) {
   .notion-page {
-    padding-left: 2vw;
-    padding-right: 2vw;
+    padding-left: 4vw;
+    padding-right: 4vw;
   }
 }
 
@@ -392,6 +392,6 @@
   color: var(--fg-color-2);
 }
 
-.notion-equation.notion-equation-block{
+.notion-equation.notion-equation-block {
   align-items: center;
 }
