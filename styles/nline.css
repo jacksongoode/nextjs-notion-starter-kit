@@ -29,6 +29,14 @@ body {
   margin-inline-end: 0;
 }
 
+.notion-quote {
+  padding: 0.2em 0.75em;
+  line-height: 1.5;
+  font-style: italic;
+  font-size: 1em;
+  border-left: 4px solid lightgray;
+}
+
 .static-tweet-emoji {
   height: 1.2em !important;
   width: 1.2em !important;
@@ -116,7 +124,7 @@ body {
 /* Soften edges of imgs */
 .notion-asset-wrapper img,
 .notion-asset-wrapper span {
-  border-radius: 0.5em;
+  border-radius: 0.25em;
 }
 
 .notion-page-icon-hero {
