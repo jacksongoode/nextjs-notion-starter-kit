@@ -15,7 +15,7 @@ module.exports = withBundleAnalyzer({
       { hostname: 's3.us-west-2.amazonaws.com' },
       { hostname: 'cdn.jsdelivr.net' }
     ],
-    minimumCacheTTL: 60,
+    // minimumCacheTTL: 60,
     formats: ['image/avif', 'image/webp'],
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;"
