@@ -76,6 +76,15 @@ body {
   max-width: 80%;
 }
 
+.notion-aside-table-of-contents-header {
+  margin: 0.5em;
+  border-bottom: 1px solid var(--fg-color-0);
+  padding-bottom: 0.5em;
+  width: 100%;
+  text-align: center;
+  text-transform: none;
+}
+
 .notion-table-of-contents-item {
   white-space: unset;
 }
