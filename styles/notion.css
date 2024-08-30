@@ -145,6 +145,12 @@
   margin: 2em 0;
 }
 
+/* Weird padding not respected */
+.notion-page {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 @media only screen and (max-width: 920px) {
   .index-page.notion-page {
     padding-left: 4vw;

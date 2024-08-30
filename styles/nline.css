@@ -69,11 +69,11 @@ body {
 
 /* Fix wide TOC */
 .notion-aside {
-  overflow-x: hidden;
+  padding: 0 1em;
 }
 
 .notion-aside-table-of-contents {
-  max-width: 80%;
+  overflow: hidden;
 }
 
 .notion-aside-table-of-contents-header {
