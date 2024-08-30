@@ -17,8 +17,9 @@ body {
   --notion-font: var(--font-soehne), ui-sans-serif, system-ui, -apple-system,
     BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'Noto Sans', sans-serif !important;
-  font-family: var(--notion-font);
   overflow-x: hidden;
+  background-color: var(--bg-color);
+  font-family: var(--notion-font);
 }
 
 .static-tweet blockquote {
@@ -31,15 +32,15 @@ body {
 
 .notion-quote {
   padding: 0.2em 0.75em;
-  line-height: 1.5;
-  font-style: italic;
-  font-size: 1em;
   border-left: 4px solid lightgray;
+  font-size: 1em;
+  font-style: italic;
+  line-height: 1.5;
 }
 
 .static-tweet-emoji {
-  height: 1.2em !important;
   width: 1.2em !important;
+  height: 1.2em !important;
 }
 
 .searchInput {
@@ -77,10 +78,10 @@ body {
 }
 
 .notion-aside-table-of-contents-header {
-  margin: 0.5em;
-  border-bottom: 1px solid var(--fg-color-0);
-  padding-bottom: 0.5em;
   width: 100%;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid var(--fg-color-0);
+  margin: 0.5em;
   text-align: center;
   text-transform: none;
 }
@@ -92,8 +93,8 @@ body {
 .notion-table-of-contents-item-body {
   display: block;
   overflow: hidden;
-  text-overflow: ellipsis;
   line-height: 1.3;
+  text-overflow: ellipsis;
 }
 
 /* Fix title overflow */
@@ -117,12 +118,12 @@ body {
 
 /* Wrap long titles */
 .notion-gallery-grid .notion-page-title-text {
-  font-size: 1.3em;
   display: -webkit-box;
+  overflow: hidden;
+  font-size: 1.3em;
+  text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-  text-overflow: ellipsis;
-  overflow: hidden;
 }
 
 /*  Fixes for Katex */
