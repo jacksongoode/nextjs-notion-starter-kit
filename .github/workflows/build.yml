@@ -7,12 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
           version: 8
 
-      - run: pnpm install --frozen-lockfile
-      - name: build
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
         #        TODO Enable those lines below if you use a Redis cache, you'll also need to configure GitHub Repository Secrets
         #        env:
         #          REDIS_HOST: ${{ secrets.REDIS_HOST }}
