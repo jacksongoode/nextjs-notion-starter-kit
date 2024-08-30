@@ -41,6 +41,7 @@ export default async function GET(req: Request) {
     interBoldFontP
   ])
 
+  // NOTE: The image is pulled from the header cover of the Notion page!
   try {
     const imgResponse = new ImageResponse(
       (
