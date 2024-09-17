@@ -359,6 +359,7 @@
 .notion-header {
   background: hsla(0, 0%, 100%, 0.8);
   backdrop-filter: saturate(80%) blur(8px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .dark-mode .notion-header {
@@ -401,4 +402,25 @@
 
 .notion-equation.notion-equation-block {
   align-items: center;
+}
+
+.notion-nav-header {
+  position: relative;
+}
+
+.notion-nav-header-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 50%;
+}
+
+.notion-nav-header-title.show {
+  opacity: 1;
 }

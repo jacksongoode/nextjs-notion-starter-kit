@@ -8,6 +8,7 @@ import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'
 import { useDarkMode } from '@/lib/use-dark-mode'
+import { getBlockTitle } from 'notion-utils'
 
 import styles from './styles.module.css'
 
@@ -36,7 +37,22 @@ const ToggleThemeButton = () => {
 export const NotionPageHeader: React.FC<{
   block: types.CollectionViewPageBlock | types.PageBlock
 }> = ({ block }) => {
-  const { components, mapPageUrl } = useNotionContext()
+  const { components, mapPageUrl, recordMap } = useNotionContext()
+  const [showTitle, setShowTitle] = React.useState(false)
+  const title = getBlockTitle(block, recordMap)
+
+  React.useEffect(() => {
+    const titleElement = document.querySelector('.notion-title')
+    if (!titleElement) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowTitle(!entry.isIntersecting),
+      { threshold: 0 }
+    )
+
+    observer.observe(titleElement)
+    return () => observer.disconnect()
+  }, [])
 
   if (navigationStyle === 'default') {
     return <Header block={block} />
@@ -46,6 +62,12 @@ export const NotionPageHeader: React.FC<{
     <header className='notion-header'>
       <div className='notion-nav-header'>
         <Breadcrumbs block={block} rootOnly={true} />
+
+        <div
+          className={`notion-nav-header-title breadcrumbs ${showTitle ? 'show' : ''}`}
+        >
+          {title}
+        </div>
 
         <div className='notion-nav-header-rhs breadcrumbs'>
           {navigationLinks
