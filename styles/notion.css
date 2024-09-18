@@ -424,3 +424,10 @@
 .notion-nav-header-title.show {
   opacity: 1;
 }
+
+/* Hide the title on mobile devices or narrow screens */
+@media (max-width: 768px) {
+  .notion-nav-header-title {
+    display: none;
+  }
+}
