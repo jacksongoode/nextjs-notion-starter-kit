@@ -427,7 +427,7 @@
 
 /* Hide the title on mobile devices or narrow screens */
 @media (max-width: 768px) {
-  .notion-nav-header-title {
+  .notion-nav-header-title.breadcrumbs {
     display: none;
   }
 }
