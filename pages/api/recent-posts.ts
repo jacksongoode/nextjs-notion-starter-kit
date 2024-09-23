@@ -36,7 +36,7 @@ type Response = {
  */
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   const siteMap = await getSiteMap()
-  const ttl = 24 * 60 * 60 // 24 hours
+  const ttl = 1 * 60 * 60 // 24 hours
   // const ttl = undefined // disable cache TTL
   const data: Response = {
     posts: []

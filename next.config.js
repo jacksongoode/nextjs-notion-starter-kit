@@ -9,6 +9,7 @@ module.exports = withBundleAnalyzer({
     remotePatterns: [
       { hostname: '**.nline.io' },
       { hostname: '**.notion.so' },
+      { hostname: '**.notionusercontent.com' },
       { hostname: 'images.unsplash.com' },
       { hostname: 'pbs.twimg.com' },
       { hostname: 'abs.twimg.com' },
