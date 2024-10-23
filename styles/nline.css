@@ -20,6 +20,23 @@ body {
   overflow-x: hidden;
   background-color: var(--bg-color);
   font-family: var(--notion-font);
+
+  /* Add shadow variables */
+  --shadow-color: 0deg 0% 0%;
+  --shadow-elevation-low: 0px 1px 2px hsl(var(--shadow-color) / 0.1);
+  --shadow-elevation-medium: 0px 2px 4px hsl(var(--shadow-color) / 0.1),
+    0px 4px 8px hsl(var(--shadow-color) / 0.1);
+  --shadow-elevation-high: 0px 2px 4px hsl(var(--shadow-color) / 0.1),
+    0px 4px 8px hsl(var(--shadow-color) / 0.1),
+    0px 8px 16px hsl(var(--shadow-color) / 0.1);
+}
+
+.notion-collection-card-cover {
+  box-shadow: var(--shadow-elevation-medium);
+}
+
+.notion-page-icon-hero.notion-page-icon-image {
+  box-shadow: var(--shadow-elevation-high);
 }
 
 .static-tweet blockquote {
@@ -83,6 +100,8 @@ body {
   border-bottom: 1px solid var(--fg-color-0);
   margin: 0.5em;
   text-transform: none;
+  padding-left: 0.25em;
+  font-size: 1em;
 }
 
 .notion-table-of-contents-item {
@@ -138,4 +157,8 @@ body {
 
 .notion-page-has-cover {
   padding-top: 84px;
+}
+
+.notion-asset-wrapper img {
+  border-radius: 0.5em;
 }
