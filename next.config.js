@@ -57,7 +57,7 @@ export default withBundleAnalyzer({
         protocol: 'https',
         hostname: 'nline.io',
         pathname: '**'
-      }
+      },
       {
         protocol: 'https',
         hostname: 'notionusercontent.com',

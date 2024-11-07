@@ -87,7 +87,7 @@ body {
 
 /* Fix wide TOC */
 .notion-aside {
-  padding: 0 1em;
+  padding: 0 2em;
 }
 
 .notion-aside-table-of-contents {
@@ -142,11 +142,6 @@ body {
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
-}
-
-/*  Fixes for Katex */
-.katex-html {
-  position: static !important;
 }
 
 /* Soften edges of imgs */

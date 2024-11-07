@@ -4,7 +4,6 @@ import * as types from 'notion-types'
 import { IoMoonSharp } from 'react-icons/io5'
 import { IoSunnyOutline } from 'react-icons/io5'
 import cs from 'classnames'
-import * as React from 'react'
 import { Breadcrumbs, Header, Search, useNotionContext } from 'react-notion-x'
 
 import { isSearchEnabled, navigationLinks, navigationStyle } from '@/lib/config'

@@ -1,5 +1,6 @@
 // global styles shared across the entire site
 import * as React from 'react'
+
 import type { AppProps } from 'next/app'
 import localFont from 'next/font/local'
 import { Analytics } from '@vercel/analytics/react'
