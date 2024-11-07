@@ -5,13 +5,20 @@ import { type NextRequest } from 'next/server'
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { type NotionPageInfo } from '@/lib/types'
 
-const interRegularFontP = ky(
-  new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
-).arrayBuffer()
+// Load fonts from the public directory root path
+const interRegularFont = fetch(
+  new URL(
+    '/fonts/Inter-Regular.ttf',
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  )
+).then((res) => res.arrayBuffer())
 
-const interBoldFontP = ky(
-  new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
-).arrayBuffer()
+const interBoldFont = fetch(
+  new URL(
+    '/fonts/Inter-SemiBold.ttf',
+    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  )
+).then((res) => res.arrayBuffer())
 
 export const config = {
   runtime: 'edge'
@@ -38,9 +45,11 @@ export default async function GET(req: Request) {
   // console.log(pageInfo)
 
   const showText = searchParams.get('text') !== 'false'
-  const [interRegularFont, interBoldFont] = await Promise.all([
-    interRegularFontP,
-    interBoldFontP
+
+  // Wait for both fonts to load
+  const [fontRegular, fontBold] = await Promise.all([
+    interRegularFont,
+    interBoldFont
   ])
 
   // NOTE: The image is pulled from the header cover of the Notion page!
@@ -178,13 +187,13 @@ export default async function GET(req: Request) {
         fonts: [
           {
             name: 'Inter',
-            data: interRegularFont,
+            data: fontRegular,
             style: 'normal',
             weight: 400
           },
           {
             name: 'Inter',
-            data: interBoldFont,
+            data: fontBold,
             style: 'normal',
             weight: 700
           }

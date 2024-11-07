@@ -110,6 +110,12 @@ importers:
         specifier: ^0.33.5
         version: 0.33.5
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.1.0
+        version: 3.1.0
+      '@eslint/js':
+        specifier: ^9.14.0
+        version: 9.14.0
       '@next/bundle-analyzer':
         specifier: 15.0.2
         version: 15.0.2
