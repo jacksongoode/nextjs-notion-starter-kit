@@ -1,19 +1,21 @@
-import * as React from 'react'
-
-import { ImageResponse } from 'next/og'
+import { ImageResponse } from '@vercel/og'
+import ky from 'ky'
+import { type NextRequest } from 'next/server'
 
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
-import { NotionPageInfo } from '@/lib/types'
+import { type NotionPageInfo } from '@/lib/types'
 
-const interRegularFontP = fetch(
+const interRegularFontP = ky(
   new URL('../../public/fonts/Inter-Regular.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
+).arrayBuffer()
 
-const interBoldFontP = fetch(
+const interBoldFontP = ky(
   new URL('../../public/fonts/Inter-SemiBold.ttf', import.meta.url)
-).then((res) => res.arrayBuffer())
+).arrayBuffer()
 
-export const runtime = 'edge'
+export const config = {
+  runtime: 'edge'
+}
 
 export default async function GET(req: Request) {
   const { searchParams } = new URL(req.url)

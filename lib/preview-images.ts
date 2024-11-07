@@ -1,6 +1,10 @@
-import got from 'got'
+import ky from 'ky'
 import lqip from 'lqip-modern'
-import { ExtendedRecordMap, PreviewImage, PreviewImageMap } from 'notion-types'
+import {
+  type ExtendedRecordMap,
+  type PreviewImage,
+  type PreviewImageMap
+} from 'notion-types'
 import { getPageImageUrls, normalizeUrl } from 'notion-utils'
 import pMap from 'p-map'
 import pMemoize from 'p-memoize'
@@ -49,15 +53,8 @@ async function createPreviewImage(
       console.warn(`redis error get "${cacheKey}"`, err.message)
     }
 
-    // Fetch image data as a stream and collect chunks into a buffer
-    const stream = got.stream(url)
-    const chunks = []
-    for await (const chunk of stream) {
-      chunks.push(chunk)
-    }
-    const buffer = Buffer.concat(chunks)
-
-    const result = await lqip(buffer)
+    const body = await ky(url).arrayBuffer()
+    const result = await lqip(body)
     console.log('lqip', { ...result.metadata, url, cacheKey })
 
     const previewImage = {
