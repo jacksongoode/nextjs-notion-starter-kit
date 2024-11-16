@@ -20,48 +20,39 @@ export default withBundleAnalyzer({
       // { hostname: 'cdn.jsdelivr.net' },
       {
         protocol: 'https',
-        hostname: 'www.notion.so',
-        pathname: '**'
+        hostname: 'www.notion.so'
       },
       {
         protocol: 'https',
-        hostname: 'notion.so',
-        pathname: '**'
+        hostname: 'notion.so'
       },
       {
         protocol: 'https',
-        hostname: 'images.unsplash.com',
-        pathname: '**'
+        hostname: 'images.unsplash.com'
       },
       {
         protocol: 'https',
-        hostname: 'pbs.twimg.com',
-        pathname: '**'
+        hostname: 'pbs.twimg.com'
       },
       {
         protocol: 'https',
-        hostname: 'abs.twimg.com',
-        pathname: '**'
+        hostname: 'abs.twimg.com'
       },
       {
         protocol: 'https',
-        hostname: 's3.us-west-2.amazonaws.com',
-        pathname: '**'
+        hostname: 's3.us-west-2.amazonaws.com'
       },
       {
         protocol: 'https',
-        hostname: 'cdn.jsdelivr.net',
-        pathname: '**'
+        hostname: 'cdn.jsdelivr.net'
       },
       {
         protocol: 'https',
-        hostname: 'nline.io',
-        pathname: '**'
+        hostname: 'nline.io'
       },
       {
         protocol: 'https',
-        hostname: 'notionusercontent.com',
-        pathname: '**'
+        hostname: 'notionusercontent.com'
       }
     ],
     minimumCacheTTL: 60,
