@@ -7,7 +7,7 @@
   "repository": "nline/nline-blog",
   "license": "MIT",
   "engines": {
-    "node": ">=22"
+    "node": ">=20"
   },
   "type": "module",
   "scripts": {
@@ -36,7 +36,6 @@
     "@keyvhq/redis": "^2.1.5",
     "@vercel/analytics": "^1.4.1",
     "@vercel/og": "^0.6.4",
-    "canvas": "^2.11.2",
     "classnames": "^2.5.1",
     "date-fns": "^4.1.0",
     "eslint-config-next": "15.0.3",
