@@ -57,7 +57,12 @@ export function getEnv(
 
 // Get the site URL based on environment
 export function getSiteUrl(req?: NextApiRequest | Request): string {
-  // If we're on Vercel, use VERCEL_URL with https
+  // If we're in production, use the configured domain
+  if (process.env.NODE_ENV === 'production') {
+    return `https://${rawSiteConfig.domain}`
+  }
+
+  // If we're on Vercel preview deployments
   if (process.env.VERCEL_URL) {
     return `https://${process.env.VERCEL_URL}`
   }
