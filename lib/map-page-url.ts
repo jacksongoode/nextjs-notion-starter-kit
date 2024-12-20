@@ -28,11 +28,12 @@ export const getCanonicalPageUrl =
   (site: Site, recordMap: ExtendedRecordMap) =>
   (pageId = '') => {
     const pageUuid = parsePageId(pageId, { uuid: true })
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
 
     if (uuidToId(pageId) === site.rootNotionPageId) {
-      return `https://${site.domain}`
+      return `${protocol}://${site.domain}`
     } else {
-      return `https://${site.domain}/${getCanonicalPageId(pageUuid, recordMap, {
+      return `${protocol}://${site.domain}/${getCanonicalPageId(pageUuid, recordMap, {
         uuid
       })}`
     }

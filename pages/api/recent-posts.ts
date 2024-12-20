@@ -12,6 +12,7 @@ import * as config from '@/lib/config'
 import { getSiteMap } from '@/lib/get-site-map'
 import { getSocialImageUrl } from '@/lib/get-social-image-url'
 import { getCanonicalPageUrl } from '@/lib/map-page-url'
+import { getSiteUrl } from '@/lib/get-config-value'
 
 type BlogPost = {
   title: string
@@ -35,6 +36,7 @@ type Response = {
  * previews on the rest of the site.
  */
 export default async function (req: NextApiRequest, res: NextApiResponse) {
+  const siteUrl = getSiteUrl(req)
   const siteMap = await getSiteMap()
   const ttl = 1 * 60 * 60 // 24 hours
   // const ttl = undefined // disable cache TTL
@@ -71,7 +73,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const description =
       getPageProperty<string>('Description', block, recordMap) ||
       config.description
-    const url = getCanonicalPageUrl(config.site, recordMap)(pageId)
+    const url = getCanonicalPageUrl({
+      ...config.site,
+      domain: new URL(siteUrl).host
+    }, recordMap)(pageId)
     const socialImageUrl = getSocialImageUrl(pageId)
     const authorList =
       getPageProperty<string>('Authors', block, recordMap) || config.author

@@ -5,20 +5,17 @@ import { type NextRequest } from 'next/server'
 import { api, apiHost, rootNotionPageId } from '@/lib/config'
 import { type NotionPageInfo } from '@/lib/types'
 
-// Load fonts from the public directory root path
-const interRegularFont = fetch(
-  new URL(
-    '/fonts/Inter-Regular.ttf',
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  )
-).then((res) => res.arrayBuffer())
+const host = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : `http://localhost:3000`
 
-const interBoldFont = fetch(
-  new URL(
-    '/fonts/Inter-SemiBold.ttf',
-    process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  )
-).then((res) => res.arrayBuffer())
+const interRegularFont = fetch(`${host}/fonts/Inter-Regular.ttf`).then((res) =>
+  res.arrayBuffer()
+)
+
+const interBoldFont = fetch(`${host}/fonts/Inter-SemiBold.ttf`).then((res) =>
+  res.arrayBuffer()
+)
 
 export const config = {
   runtime: 'edge'

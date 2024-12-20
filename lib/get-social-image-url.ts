@@ -1,8 +1,9 @@
-import { api, host } from './config'
+import { api } from './config'
+import { getSiteUrl } from './get-config-value'
 
 export function getSocialImageUrl(pageId: string) {
   try {
-    const url = new URL(api.getSocialImage, host)
+    const url = new URL(api.getSocialImage, getSiteUrl())
 
     if (pageId) {
       url.searchParams.set('id', pageId)

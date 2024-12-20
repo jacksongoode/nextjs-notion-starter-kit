@@ -1,5 +1,6 @@
 import rawSiteConfig from '../site.config'
 import { type SiteConfig } from './site-config'
+import { NextApiRequest } from 'next'
 
 if (!rawSiteConfig) {
   throw new Error(`Config error: invalid site.config.ts`)
@@ -52,4 +53,33 @@ export function getEnv(
   }
 
   throw new Error(`Config error: missing required env variable "${key}"`)
+}
+
+// Get the site URL based on environment
+export function getSiteUrl(req?: NextApiRequest | Request): string {
+  // If we're on Vercel, use VERCEL_URL with https
+  if (process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`
+  }
+
+  // If we have a request object, use its host
+  if (req) {
+    const protocol = process.env.NODE_ENV === 'development' ? 'http' : 'https'
+
+    if ('headers' in req && req.headers && 'host' in req.headers) {
+      // Handle NextApiRequest
+      return `${protocol}://${req.headers.host}`
+    }
+
+    if (req instanceof Request) {
+      // Handle standard Request
+      const host = req.headers.get('host')
+      if (host) {
+        return `${protocol}://${host}`
+      }
+    }
+  }
+
+  // Fallback for local development - always use http
+  return 'http://localhost:3000'
 }
