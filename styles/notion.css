@@ -400,9 +400,9 @@
   color: var(--fg-color-2);
 }
 
-.notion-equation.notion-equation-block {
+/* .notion-equation.notion-equation-block {
   align-items: center;
-}
+} */
 
 .notion-nav-header {
   position: relative;
