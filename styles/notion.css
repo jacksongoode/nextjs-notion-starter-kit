@@ -423,6 +423,8 @@
 
 .notion-nav-header-title.show {
   opacity: 1;
+  display: inline;
+  align-content: center;
 }
 
 /* Hide the title on mobile devices or narrow screens */
